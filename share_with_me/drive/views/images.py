@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-# from django.views.generic import CreateView
-# from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 
 from drive.models import Image
 
@@ -14,10 +14,10 @@ def detail(request, image_id):
     return render(request, 'images/detail.html', {'image': image})
 
 
-# class ImageCreateView(CreateView):
-#     model = Course
-#     fields = ['name', 'description', 'start_date', 'end_date']
-#     template_name = 'courses/create.html'
+class ImageCreateView(CreateView):
+    model = Image
+    fields = ['description', 'image']
+    template_name = 'images/create.html'
 
-#     def get_success_url(self, **kwargs):
-#         return reverse_lazy('education:courses:detail', kwargs={'course_id': self.object.id})
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('drive:images:detail', kwargs={'image_id': self.object.id})

@@ -1,4 +1,7 @@
 {% extends "images/base.html" %} {% block content %}
+
+<a href="{% url 'drive:images:create' %}">Add new image</a>
+
 {% if images %}
 <ul>
   {% for image in images %}
