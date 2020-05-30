@@ -132,3 +132,5 @@ dmypy.json
 
 *.sqlite3
 *.db
+
+share_with_me/media/
