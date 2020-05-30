@@ -1,4 +1,3 @@
-    # import os
 from django.db import models
 from django.utils.safestring import mark_safe
 from share_with_me.settings import MEDIA_ROOT
@@ -10,7 +9,7 @@ from share_with_me.settings import MEDIA_ROOT
 class Image(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to=MEDIA_ROOT, blank=True)
+    image = models.ImageField(upload_to=MEDIA_ROOT,)
 
     def image_tag(self):
         # used in the admin site model as a "thumbnail"
