@@ -1,9 +1,9 @@
-# import os
+    # import os
 from django.db import models
 from django.utils.safestring import mark_safe
-# from share_with_me.settings import MEDIA_ROOT
+from share_with_me.settings import MEDIA_ROOT
 
-MEDIA_ROOT = "media"
+# MEDIA_ROOT = "media"
 
 
 # Create your models here.

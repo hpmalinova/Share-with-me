@@ -1,10 +1,8 @@
 {% extends "images/base.html" %} {% block content %}
-<!-- <a href="{% url 'education:images:create' %}">Add new</a> -->
-
 {% if images %}
 <ul>
   {% for image in images %}
-  <li><a href="{% url 'drive:images:detail' image.id %}">{{ image.image }}</a></li>
+  <li><a href="{% url 'drive:images:detail' image.id %}">{{ image.image_tag }}</a></li>
   {% endfor %}
 </ul>
 {% else %}
