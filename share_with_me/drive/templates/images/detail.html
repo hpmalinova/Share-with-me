@@ -1,11 +1,8 @@
 {% extends "images/base.html" %} {% block content %}
 <img src="{{image.image.url}}" />
-<embed src="{{image.file.path}}" type="application/pdf" height="700px" width="500">
-<!-- <iframe
-    src="{{image.file.name}}"
-    frameBorder="0"
-    scrolling="auto"
-    height="100%"
-    width="100%"
-></iframe> -->
+<object data="{{image.file}}" type="application/pdf" width="750px" height="750px">
+    <embed src="{{image.file}}" type="application/pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="{{image.file.url}}">Download PDF</a>.</p>
+    </embed>
+</object>
 {% endblock %}
