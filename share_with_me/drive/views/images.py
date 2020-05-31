@@ -16,7 +16,7 @@ def detail(request, image_id):
 
 class ImageCreateView(CreateView):
     model = Image
-    fields = ['description', 'image']
+    fields = ['description', 'image', 'file']
     template_name = 'images/create.html'
 
     def get_success_url(self, **kwargs):

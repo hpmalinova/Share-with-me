@@ -1,3 +1,11 @@
 {% extends "images/base.html" %} {% block content %}
 <img src="{{image.image.url}}" />
+<embed src="{{image.file.path}}" type="application/pdf" height="700px" width="500">
+<!-- <iframe
+    src="{{image.file.name}}"
+    frameBorder="0"
+    scrolling="auto"
+    height="100%"
+    width="100%"
+></iframe> -->
 {% endblock %}

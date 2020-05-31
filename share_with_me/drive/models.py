@@ -10,6 +10,7 @@ class Image(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to=MEDIA_ROOT,)
+    file = models.FileField(upload_to=MEDIA_ROOT,)
 
     def image_tag(self):
         # used in the admin site model as a "thumbnail"
