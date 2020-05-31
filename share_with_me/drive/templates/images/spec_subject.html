@@ -1,10 +1,10 @@
+{% extends "images/base.html" %} {% block content %}
 <h1>Uploading files for: <strong>{{ subj }} </h1>
 <h2>Add new image</h2>
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  <input type="file" name="image" />
-  <input type="text" name="description" />
-  <input type="file" id="file" name="file" />
+  {{ form.as_p }}
   <button type="submit">Upload image</button>
 </form>
+{% endblock %}

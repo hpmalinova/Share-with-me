@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView
 from django.urls import reverse_lazy, reverse
-
-from drive.models import Image, content_file_name
+from drive.models import Image
 
 from django import forms
 
@@ -10,21 +9,20 @@ from django import forms
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ('image', 'file', 'description')
+        fields = ('description', 'image', 'file')
 
 
 def spec_subject(request, course_id, spec, subj):
     if request.method == "POST":
-        # print(request.get_full_path())
-        data = request.POST
-        form = ImageForm(data=data)
-        print(form)
+        form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            print('HEREHEREHEREHEREHEREHERE')
-            new_image = form.save(commit=True)
+            instance = form.save(commit=False)
+            instance.course = course_id
+            instance.speciality = spec
+            instance.subject = subj
+            instance.save()
             return redirect(reverse('drive:images:list'))
         else:
-            print('THERETHERETHERETHERETHERE')
             return render(
                 request,
                 'images/spec_subject.html',
@@ -47,17 +45,6 @@ def spec_subject(request, course_id, spec, subj):
                 'subj': subj
             }
         )
-    '''
-    return render(
-        request,
-        'images/spec_subject.html',
-        {
-            'course_id': course_id,
-            'spec': spec,
-            'subj': subj
-        }
-    )
-    '''
 
 
 # TODO: Make dictionaries of the subjects for each year and speciality
@@ -66,7 +53,7 @@ def subject(request, course_id, spec):
         request,
         'images/subject.html',
         {
-            'subjects': ['Math1', 'Math2'],
+            'subjects': ['Algebra1', 'Algebra2'],
             'course_id': course_id,
             'spec': spec
         }
