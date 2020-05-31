@@ -5,12 +5,18 @@ from share_with_me.settings import MEDIA_ROOT
 # MEDIA_ROOT = "media"
 
 
+def content_file_name(instance, filename):
+    print('Instance', instance.description)
+    print('Filename', filename)
+    return 'test/{0}'.format(filename)
+
+
 # Create your models here.
 class Image(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to=MEDIA_ROOT,)
-    file = models.FileField(upload_to=MEDIA_ROOT,)
+    image = models.ImageField(upload_to=content_file_name)
+    file = models.FileField(upload_to=content_file_name)
 
     def image_tag(self):
         # used in the admin site model as a "thumbnail"

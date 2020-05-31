@@ -1,0 +1,12 @@
+{% extends "images/base.html" %} {% block content %}
+<h1>Subjects</h1>
+{% if subjects %}
+<ul>
+  {% for subject in subjects %}
+  <li><a href="{% url 'drive:images:spec_subject' course_id spec subject %}">{{ subject }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><strong>No subjects yet.</strong></p>
+{% endif %}
+{% endblock %}
