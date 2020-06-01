@@ -1,9 +1,12 @@
 {% extends "images/base.html" %} {% block content %}
 <h1>Choose Course</h1>
+
+{% if courses %}
 <ul>
-    <li><a href="{% url 'drive:images:speciality' 1 %}">First Year</a></li>
-    <li><a href="{% url 'drive:images:speciality' 2 %}">Second Year</a></li>
-    <li><a href="{% url 'drive:images:speciality' 3 %}">Third Year</a></li>
-    <li><a href="{% url 'drive:images:speciality' 4 %}">Fourth Year</a></li>
+  {% for course in courses %}
+  <li><a href="{% url 'drive:images:speciality' course %}">Course:{{ course }}</a></li>
+  {% endfor %}
 </ul>
-{% endblock %}
+{% else %}
+<p><strong>No courses yet.</strong></p>
+{% endif %} {% endblock %}

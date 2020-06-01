@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import CreateView
-from django.urls import reverse_lazy, reverse
-from drive.models import Image
+# from django.views.generic import CreateView
+from django.urls import reverse
+from drive.models import Image, Courses
 
 from django import forms
 
@@ -12,7 +12,60 @@ class ImageForm(forms.ModelForm):
         fields = ('description', 'file',)
 
 
-def upload_file(request, course_id, spec, subj):
+def base(request):
+    return render(
+        request,
+        'images/base.html',
+    )
+
+
+def courses(request):
+    return render(
+        request,
+        'images/courses.html',
+        {
+            'courses': Courses.objects.values_list('course', flat=True)
+        }
+    )
+
+
+def speciality(request, course):
+    return render(
+        request,
+        'images/speciality.html',
+        {
+            'course': course,
+            'specialties': Courses.objects.values_list('specialty', flat=True).filter(course=course)
+        }
+    )
+
+
+def subject(request, course, specialty):
+    return render(
+        request,
+        'images/subject.html',
+        {
+            'course': course,
+            'specialty': specialty,
+            'subjects': Courses.objects.values_list('subject', flat=True).filter(course=course, specialty=specialty)
+        }
+    )
+
+
+def detail_subject(request, course, specialty, subject):
+    return render(
+        request,
+        'images/detail_subject.html',
+        {
+            'course': course,
+            'specialty': specialty,
+            'subject': subject,
+            'my_path': Courses.objects.filter(course=course, specialty=specialty, subject=subject).first().my_path
+        }
+    )
+
+
+def upload_file(request, course, specialty, subject, path):
     if request.method == "POST":
         flag = False
         form = ImageForm(request.POST, request.FILES)
@@ -21,25 +74,23 @@ def upload_file(request, course_id, spec, subj):
             if 'image/' in str(request.FILES):
                 instance.image = instance.file
                 flag = True
-
-            instance.course = course_id
-            instance.speciality = spec
-            instance.subject = subj
+            instance.course_path = path
             instance.save()
 
             if flag is True:
                 instance.file = None
                 instance.save(update_fields=['file'])
-            return redirect(reverse('drive:images:detail_subject', args=[course_id, spec, subj]))
+            return redirect(reverse('drive:images:detail_subject', args=[course, specialty, subject]))
+
         else:
             return render(
                 request,
                 'images/upload_file.html',
                 {
                     'form': form,
-                    'course_id': course_id,
-                    'spec': spec,
-                    'subj': subj
+                    'course': course,
+                    'specialty': specialty,
+                    'subject': subject,
                 }
             )
     else:
@@ -49,77 +100,22 @@ def upload_file(request, course_id, spec, subj):
             'images/upload_file.html',
             {
                 'form': form,
-                'course_id': course_id,
-                'spec': spec,
-                'subj': subj
+                'course': course,
+                'specialty': specialty,
+                'subject': subject,
             }
         )
 
 
-# TODO: Make dictionaries of the subjects for each year and speciality
-def subject(request, course_id, spec):
-    return render(
-        request,
-        'images/subject.html',
-        {
-            'subjects': ['Algebra1', 'Algebra2'],
-            'course_id': course_id,
-            'spec': spec
-        }
-    )
-
-
-def detail_subject(request, course_id, spec, subj):
-    return render(
-        request,
-        'images/detail_subject.html',
-        {
-            'course_id': course_id,
-            'spec': spec,
-            'subj': subj,
-            'images': Image.objects.filter(speciality=spec, subject=subj,
-                                           course=course_id)
-        }
-    )
-
-
-def speciality(request, course_id):
-    return render(
-        request,
-        'images/speciality.html',
-        {
-            'course_id': course_id
-        }
-    )
-
-
-def courses(request):
-    return render(
-        request,
-        'images/courses.html'
-    )
-
-
-def list(request, course_id, spec, subj):
+def list(request, course, specialty, subject, path):
     return render(
         request,
         'images/list.html',
         {
-            'course_id': course_id,
-            'spec': spec,
-            'subj': subj,
-            'images': Image.objects.filter(speciality=spec, subject=subj,
-                                           course=course_id)
-        }
-    )
-
-
-def base(request):
-    return render(
-        request,
-        'images/base.html',
-        {
-            # 'images': Image.objects.all()
+            'course': course,
+            'specialty': specialty,
+            'subject': subject,
+            'images': Image.objects.filter(course_path=path)
         }
     )
 
@@ -131,18 +127,9 @@ def detail(request, course_id, spec, subj, image_id):
         request,
         'images/detail.html',
         {
-            'course_id': course_id,
-            'spec': spec,
-            'subj': subj,
-            'image': image,
+            'course': course,
+            'specialty': specialty,
+            'subject': subject,
+            'images': images,
         }
     )
-
-
-# class ImageCreateView(CreateView):
-#     model = Image
-#     fields = ['description', 'image', 'file']
-#     template_name = 'images/create.html'
-
-#     def get_success_url(self, **kwargs):
-#         return reverse_lazy('drive:images:detail', kwargs={'image_id': self.object.id})
