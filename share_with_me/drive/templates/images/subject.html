@@ -4,7 +4,8 @@
 {% if subjects %}
 <ul>
   {% for subject in subjects %}
-  <li><a href="{% url 'drive:images:spec_subject' course_id spec subject %}">{{ subject }}</a></li>
+
+  <li><a href="{% url 'drive:images:detail_subject' course_id spec subject %}">{{ subject }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

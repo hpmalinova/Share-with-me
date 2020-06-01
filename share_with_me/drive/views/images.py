@@ -12,7 +12,7 @@ class ImageForm(forms.ModelForm):
         fields = ('description', 'file',)
 
 
-def spec_subject(request, course_id, spec, subj):
+def upload_file(request, course_id, spec, subj):
     if request.method == "POST":
         flag = False
         form = ImageForm(request.POST, request.FILES)
@@ -69,6 +69,20 @@ def subject(request, course_id, spec):
     )
 
 
+def detail_subject(request, course_id, spec, subj):
+    return render(
+        request,
+        'images/detail_subject.html',
+        {
+            'subject': subj,
+            'course_id': course_id,
+            'spec': spec,
+            'images': Image.objects.filter(speciality=spec, subject=subj,
+                                           course=course_id)
+        }
+    )
+
+
 def speciality(request, course_id):
     return render(
         request,
@@ -96,6 +110,16 @@ def list(request):
     )
 
 
+def base(request):
+    return render(
+        request,
+        'images/base.html',
+        {
+            # 'images': Image.objects.all()
+        }
+    )
+
+
 def detail(request, image_id):
     image = get_object_or_404(Image, id=image_id)
 
@@ -108,10 +132,10 @@ def detail(request, image_id):
     )
 
 
-class ImageCreateView(CreateView):
-    model = Image
-    fields = ['description', 'image', 'file']
-    template_name = 'images/create.html'
+# class ImageCreateView(CreateView):
+#     model = Image
+#     fields = ['description', 'image', 'file']
+#     template_name = 'images/create.html'
 
-    def get_success_url(self, **kwargs):
-        return reverse_lazy('drive:images:detail', kwargs={'image_id': self.object.id})
+#     def get_success_url(self, **kwargs):
+#         return reverse_lazy('drive:images:detail', kwargs={'image_id': self.object.id})

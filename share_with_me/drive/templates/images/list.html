@@ -1,7 +1,6 @@
 {% extends "images/base.html" %} {% block content %}
 
-<a href="{% url 'drive:images:courses' %}">Add new file</a>
-<!--<a href="{% url 'drive:images:create' %}">Add new file (CreateImage)</a> Delete!-->
+<a href="{% url 'drive:images:detail_subject' %}">Back</a>
 {% if images %}
 <ul>
   {% for image in images %}
