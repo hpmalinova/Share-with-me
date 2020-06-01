@@ -1,8 +1,11 @@
 {% extends "images/base.html" %} {% block content %}
 <img src="{{image.image.url}}" />
 <object data="{{image.file}}" type="application/pdf" width="750px" height="750px">
+    {% if image.file %}
     <embed src="{{image.file}}" type="application/pdf">
         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="{{image.file.url}}">Download PDF</a>.</p>
     </embed>
+    {% else %}
+    {% endif %}
 </object>
 {% endblock %}
