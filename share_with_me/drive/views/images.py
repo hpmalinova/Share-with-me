@@ -34,7 +34,7 @@ def upload_file(request, course_id, spec, subj):
         else:
             return render(
                 request,
-                'images/spec_subject.html',
+                'images/upload_file.html',
                 {
                     'form': form,
                     'course_id': course_id,
