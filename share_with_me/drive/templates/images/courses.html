@@ -1,0 +1,10 @@
+{% extends "images/base.html" %} {% block content %}
+<p><a href="{% url 'drive:images:list' %}">Back</a></p>
+<h1>Choose Course</h1>
+<ul>
+    <li><a href="{% url 'drive:images:speciality' 1 %}">First Year</a></li>
+    <li><a href="{% url 'drive:images:speciality' 2 %}">Second Year</a></li>
+    <li><a href="{% url 'drive:images:speciality' 3 %}">Third Year</a></li>
+    <li><a href="{% url 'drive:images:speciality' 4 %}">Fourth Year</a></li>
+</ul>
+{% endblock %}
