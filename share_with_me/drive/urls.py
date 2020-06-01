@@ -15,7 +15,7 @@ images_patterns = [
     path('courses/<int:course>/<str:specialty>/<str:subject>/upload',
          images.upload_file,
          name='upload_file'),
-    path('courses/<int:course_id>/<str:specialty>/<str:subject>/<int:image_id>/', images.detail, name='detail')
+    path('courses/<int:course>/<str:specialty>/<str:subject>/<int:image_id>/', images.detail, name='detail')
 ]
 
 urlpatterns = [

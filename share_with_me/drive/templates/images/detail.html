@@ -1,4 +1,5 @@
 {% extends "images/base.html" %} {% block content %}
+<p><a href="{% url 'drive:images:list' course specialty subject %}">Back</a></p>
 <img src="{{image.image.url}}" />
 <object data="{{image.file}}" type="application/pdf" width="750px" height="750px">
     {% if image.file %}

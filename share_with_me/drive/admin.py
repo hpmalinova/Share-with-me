@@ -11,4 +11,4 @@ class ImageAdmin(admin.ModelAdmin):
 
 @admin.register(Courses)
 class CoursesAdmin(admin.ModelAdmin):
-    list_display = ('course', 'specialty', 'subject', 'my_path')
+    list_display = ('course', 'specialty', 'subject', 'path')

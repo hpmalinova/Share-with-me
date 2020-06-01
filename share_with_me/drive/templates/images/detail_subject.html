@@ -2,8 +2,8 @@
 <p><a href="{% url 'drive:images:subject' course specialty %}">Back</a></p>
 
 <h1><strong>{{ subject }} </strong></h1>
-
-<a href="{% url 'drive:images:upload_file' course specialty subject my_path %}">Upload file</a>
-<a href="{% url 'drive:images:list' course specialty subject my_path %}">Show files</a>
+<h1>{{path}}</h1>
+<a href="{% url 'drive:images:upload_file' course specialty subject %}">Upload file</a>
+<a href="{% url 'drive:images:list' course specialty subject %}">Show files</a>
 
 {% endblock %}

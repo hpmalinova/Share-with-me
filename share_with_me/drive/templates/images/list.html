@@ -1,10 +1,10 @@
 {% extends "images/base.html" %} {% block content %}
 
-<a href="{% url 'drive:images:detail_subject' course_id spec subj %}">Back</a>
+<p><a href="{% url 'drive:images:detail_subject' course specialty subject %}">Back</a></p>
 {% if images %}
 <ul>
   {% for image in images %}
-  <li><a href="{% url 'drive:images:detail' course_id spec subj image.id %}">{{ image.image_tag }}</a></li>
+  <li><a href="{% url 'drive:images:detail' course specialty subject image.id %}">{{ image.image_tag }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

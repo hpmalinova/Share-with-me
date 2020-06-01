@@ -60,12 +60,12 @@ def detail_subject(request, course, specialty, subject):
             'course': course,
             'specialty': specialty,
             'subject': subject,
-            'my_path': Courses.objects.filter(course=course, specialty=specialty, subject=subject).first().my_path
+            'path': Courses.objects.filter(course=course, specialty=specialty, subject=subject).first().path
         }
     )
 
 
-def upload_file(request, course, specialty, subject, path):
+def upload_file(request, course, specialty, subject):
     if request.method == "POST":
         flag = False
         form = ImageForm(request.POST, request.FILES)
@@ -74,7 +74,12 @@ def upload_file(request, course, specialty, subject, path):
             if 'image/' in str(request.FILES):
                 instance.image = instance.file
                 flag = True
-            instance.course_path = path
+            instance.course_path = Courses(
+                course=course,
+                specialty=specialty,
+                subject=subject,
+                path=f'{course}/{specialty}/{subject}'
+            )
             instance.save()
 
             if flag is True:
@@ -107,7 +112,9 @@ def upload_file(request, course, specialty, subject, path):
         )
 
 
-def list(request, course, specialty, subject, path):
+def list(request, course, specialty, subject):
+    path = f'{course}/{specialty}/{subject}'
+
     return render(
         request,
         'images/list.html',
@@ -120,7 +127,7 @@ def list(request, course, specialty, subject, path):
     )
 
 
-def detail(request, course_id, spec, subj, image_id):
+def detail(request, course, specialty, subject, image_id):
     image = get_object_or_404(Image, id=image_id)
 
     return render(
@@ -130,6 +137,6 @@ def detail(request, course_id, spec, subj, image_id):
             'course': course,
             'specialty': specialty,
             'subject': subject,
-            'images': images,
+            'image': image,
         }
     )
