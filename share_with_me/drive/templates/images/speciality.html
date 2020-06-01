@@ -1,4 +1,5 @@
 {% extends "images/base.html" %} {% block content %}
+<p><a href="{% url 'drive:images:courses' %}">Back</a></p>
 <h1>Choose Speciality</h1>
 <ul>
     <li><a href="{% url 'drive:images:subject' course_id=course_id spec='cs' %}">Computer Science</a></li>
