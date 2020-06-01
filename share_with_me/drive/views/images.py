@@ -30,7 +30,7 @@ def upload_file(request, course_id, spec, subj):
             if flag is True:
                 instance.file = None
                 instance.save(update_fields=['file'])
-            return redirect(reverse('drive:images:courses'))
+            return redirect(reverse('drive:images:detail_subject', args=[course_id, spec, subj]))
         else:
             return render(
                 request,
@@ -108,7 +108,8 @@ def list(request, course_id, spec, subj):
             'course_id': course_id,
             'spec': spec,
             'subj': subj,
-            'images': Image.objects.all()
+            'images': Image.objects.filter(speciality=spec, subject=subj,
+                                           course=course_id)
         }
     )
 
