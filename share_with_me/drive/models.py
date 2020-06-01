@@ -16,8 +16,8 @@ class Image(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to=content_file_name)
-    file = models.FileField(upload_to=content_file_name)
+    image = models.ImageField(default='static/default_img.jpg', upload_to=content_file_name)
+    file = models.FileField(upload_to=content_file_name, blank=True, null=True)
 
     def image_tag(self):
         # used in the admin site model as a "thumbnail"

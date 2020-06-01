@@ -9,18 +9,27 @@ from django import forms
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ('description', 'image', 'file')
+        fields = ('description', 'file',)
 
 
 def spec_subject(request, course_id, spec, subj):
     if request.method == "POST":
+        flag = False
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
+            if 'image/' in str(request.FILES):
+                instance.image = instance.file
+                flag = True
+
             instance.course = course_id
             instance.speciality = spec
             instance.subject = subj
             instance.save()
+
+            if flag is True:
+                instance.file = None
+                instance.save(update_fields=['file'])
             return redirect(reverse('drive:images:list'))
         else:
             return render(
