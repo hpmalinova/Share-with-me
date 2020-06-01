@@ -1,11 +1,11 @@
 {% extends "images/base.html" %} {% block content %}
 <p><a href="{% url 'drive:images:subject' course_id spec %}">Back</a></p>
 <h1>Uploading files for: <strong>{{ subj }} </h1>
-<h2>Add new image</h2>
+<h2>Add new file</h2>
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Upload image</button>
+  <button type="submit">Upload file</button>
 </form>
 {% endblock %}

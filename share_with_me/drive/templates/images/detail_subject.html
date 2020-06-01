@@ -1,0 +1,9 @@
+{% extends "images/base.html" %} {% block content %}
+<p><a href="{% url 'drive:images:subject' course_id spec %}">Back</a></p>
+
+<h1><strong>{{ subj }} </strong></h1>
+
+<a href="{% url 'drive:images:upload_file' course_id spec subj %}">Upload file</a>
+<a href="{% url 'drive:images:list' course_id spec subj %}">Show files</a>
+
+{% endblock %}
