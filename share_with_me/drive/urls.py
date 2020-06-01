@@ -7,7 +7,7 @@ app_name = 'drive'
 images_patterns = [
     # NEW
     path('', images.base, name='base'),
-    # path('', images.list, name='list'),
+    path('courses/<int:course_id>/<str:spec>/<str:subj>/list', images.list, name='list'),
     # path('new/', images.ImageCreateView.as_view(), name='create'),
     path('courses/', images.courses, name='courses'),
     # NO speciality or subject

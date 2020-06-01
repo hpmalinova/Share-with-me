@@ -30,7 +30,7 @@ def upload_file(request, course_id, spec, subj):
             if flag is True:
                 instance.file = None
                 instance.save(update_fields=['file'])
-            return redirect(reverse('drive:images:list'))
+            return redirect(reverse('drive:images:courses'))
         else:
             return render(
                 request,
@@ -46,7 +46,7 @@ def upload_file(request, course_id, spec, subj):
         form = ImageForm()
         return render(
             request,
-            'images/spec_subject.html',
+            'images/upload_file.html',
             {
                 'form': form,
                 'course_id': course_id,
@@ -74,9 +74,9 @@ def detail_subject(request, course_id, spec, subj):
         request,
         'images/detail_subject.html',
         {
-            'subject': subj,
             'course_id': course_id,
             'spec': spec,
+            'subj': subj,
             'images': Image.objects.filter(speciality=spec, subject=subj,
                                            course=course_id)
         }
@@ -100,11 +100,14 @@ def courses(request):
     )
 
 
-def list(request):
+def list(request, course_id, spec, subj):
     return render(
         request,
         'images/list.html',
         {
+            'course_id': course_id,
+            'spec': spec,
+            'subj': subj,
             'images': Image.objects.all()
         }
     )
@@ -120,14 +123,17 @@ def base(request):
     )
 
 
-def detail(request, image_id):
+def detail(request, course_id, spec, subj, image_id):
     image = get_object_or_404(Image, id=image_id)
 
     return render(
         request,
         'images/detail.html',
         {
-            'image': image
+            'course_id': course_id,
+            'spec': spec,
+            'subj': subj,
+            'image': image,
         }
     )
 
