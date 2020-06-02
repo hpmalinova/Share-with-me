@@ -1,6 +1,6 @@
 {% extends "images/base.html" %} {% block content %}
 
-<h3><a href="{% url 'drive:images:list' course specialty subject %}" 
+<h3><a href="{% url 'drive:images:list' path %}" 
     style="float: right;">Back</a></h3>
 
 <p> Created at: {{image.created_at}} </p>

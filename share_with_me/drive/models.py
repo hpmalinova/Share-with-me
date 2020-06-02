@@ -6,10 +6,18 @@ class Courses(models.Model):
     course = models.IntegerField()
     specialty = models.CharField(max_length=30)
     subject = models.CharField(max_length=30)
-    path = models.TextField(primary_key=True)
+    path = models.TextField(primary_key=True, blank=True)
+
+    rating_votes = models.IntegerField(default=0)
+    rating_score = models.IntegerField(default=0)
+
+    def avg_rating(self):
+        if self.rating_votes == 0:
+            return 0
+        return self.rating_votes / self.rating_score
 
     def save(self, *args, **kwargs):
-        self.path = f'{self.course}/{self.specialty}/{self.subject}'
+        self.path = f'{self.course}/{self.specialty}/{self.subject}/'
         super().save(*args, **kwargs)
 
 
