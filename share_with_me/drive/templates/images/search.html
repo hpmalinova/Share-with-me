@@ -1,0 +1,12 @@
+{% extends "images/base.html" %} {% block content %}
+{% if courses %}
+<p>Is this what you're looking for:</p>
+<ul>
+  {% for course in courses %}
+  <li><a href="{% url 'drive:images:detail_subject' course.course course.specialty course.subject%}">{{ course.subject }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><strong>No matches found.</strong></p>
+{% endif %} 
+{% endblock %}

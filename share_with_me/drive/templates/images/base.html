@@ -2,4 +2,9 @@
 <link rel="stylesheet" href="{% static 'drive/style.css' %}">
 <h1><a href="{% url 'drive:index' %}">Home</a></h1>
 <h1><a href="{% url 'drive:images:courses' %}">Courses</a></h1>
+<div class="center search">
+    <form method="GET" action="{% url 'drive:images:search'%}" id="searchform">
+        <input STYLE="color: #FFFFFF; font-weight: font-size: 12px; background-color: #000000;" size="23" class="searchfield" id="searchbox" name="q" type="text" value="{{ request.GET.q }}" placeholder="Search Course..."/>
+    </form>
+</div>
 {% block content %} {% endblock %}

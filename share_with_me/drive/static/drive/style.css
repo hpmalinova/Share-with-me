@@ -17,6 +17,10 @@ p {
     color: white;
 }
 
+label {
+    color:white;
+}
+
 
 a {
     color: white;
@@ -67,4 +71,15 @@ a {
     margin: auto;
     width: 100%;
     text-align: center;
+}
+
+.center.search {
+    background-color:black;
+    height: 30px;
+    top: 10px;
+    width:150%;
+    margin: auto;
+    text-align: left;
+    position:relative;
+    display:inline;
 }
