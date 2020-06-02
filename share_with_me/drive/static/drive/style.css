@@ -1,92 +1,56 @@
-body {
-    background-color: black;
-}
-h2, h3, li {
-    color: white;
-    display: inline;
-}
-
-h3 {
-    border: 2px solid white;
-    display:inline;
-    text-align: right;
-    color: white;
+.sharewithme {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: blockletter;
+    margin: auto;
+    font-size: 50px;
 }
 
-h1 {
-    border: 2px solid white;
-    display:inline;
-    text-align: center;
-    color: white;
-}
-
-p {
-    color: white;
-}
-
-label {
-    color:white;
-}
-
-
-a {
-    color: white;
-    display: inline;
-    text-decoration: none;
-}
+button {width: 6em; height: 100%; background-color: #ff0040; font-size: 50px; font-family: blockletter; color: white; border: none;}
+button:hover span {display: none}
+button:hover:before {content: "ENTER"}
 
 .center {
     width: 100%;
     text-align: center;
 }
 
-.vertical {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
+/* a */
+
+a {
+    font-family: 'blockletter';
+    text-decoration: none;
 }
 
-.center.vertical {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
-    width: 100%;
+a:link {
+    color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+/* a */
+
+h1 {
+    display: inline;
     text-align: center;
+    color: white;
 }
 
-.center.vertical2 {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top:100;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
-    width: 100%;
-    text-align: center;
+div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
-.center.search {
-    background-color:black;
-    height: 30px;
-    top: 10px;
-    width:150%;
-    margin: auto;
-    text-align: left;
-    position:relative;
-    display:inline;
+/* Blockletter Font */
+@font-face {
+  font-family: 'blockletter';
+  src: url('fonts/blockletter.otf') format("truetype");
 }

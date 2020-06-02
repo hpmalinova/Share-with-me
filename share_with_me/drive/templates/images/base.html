@@ -1,6 +1,11 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'drive/style.css' %}">
-<h1><a href="{% url 'drive:index' %}">Home</a></h1>
+<style>
+    body {
+        background-color: #eaeaea;
+    }
+</style>
+<h1><a href="{% url 'drive:images:base' %}">Home</a></h1>
 <h1><a href="{% url 'drive:images:courses' %}">Courses</a></h1>
 
 <div class="center search">
