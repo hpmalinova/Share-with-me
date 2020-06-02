@@ -24,7 +24,7 @@ def courses(request):
         request,
         'images/courses.html',
         {
-            'courses': Courses.objects.values_list('course', flat=True)
+            'courses': Courses.objects.values_list('course', flat=True).distinct()
         }
     )
 
@@ -35,7 +35,7 @@ def speciality(request, course):
         'images/speciality.html',
         {
             'course': course,
-            'specialties': Courses.objects.values_list('specialty', flat=True).filter(course=course)
+            'specialties': Courses.objects.values_list('specialty', flat=True).filter(course=course).distinct()
         }
     )
 

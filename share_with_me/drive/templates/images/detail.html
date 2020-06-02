@@ -1,12 +1,15 @@
 {% extends "images/base.html" %} {% block content %}
 <p><a href="{% url 'drive:images:list' course specialty subject %}">Back</a></p>
+
+<p> Created at: {{image.created_at}} </p>
+<p>    Description: {{image.description}} </p>
+
 <img src="{{image.image.url}}" />
-<object data="{{image.file}}" type="application/pdf" width="750px" height="750px">
-    {% if image.file %}
+
+{% if image.file %}
     <embed src="{{image.file}}" type="application/pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="{{image.file.url}}">Download PDF</a>.</p>
+        <p><a href="{{image.file.url}}">Download File</a>.</p>
     </embed>
-    {% else %}
-    {% endif %}
-</object>
+{% endif %}
+
 {% endblock %}
