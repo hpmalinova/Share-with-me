@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'drive/style.css' %}">
 <h1><a href="{% url 'drive:index' %}">Home</a></h1>
 <h1><a href="{% url 'drive:images:courses' %}">Courses</a></h1>
 {% block content %} {% endblock %}
