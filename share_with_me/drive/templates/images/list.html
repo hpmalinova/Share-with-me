@@ -1,6 +1,7 @@
 {% extends "images/base.html" %} {% block content %}
 
-<p><a href="{% url 'drive:images:detail_subject' course specialty subject %}">Back</a></p>
+<h3><a href="{% url 'drive:images:detail_subject' course specialty subject %}" style="float: right;">Back</a></h3>
+
 {% if images %}
 <ul>
   {% for image in images %}

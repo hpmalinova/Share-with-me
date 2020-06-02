@@ -6,6 +6,13 @@ h2, h3, li {
     display: inline;
 }
 
+h3 {
+    border: 2px solid white;
+    display:inline;
+    text-align: right;
+    color: white;
+}
+
 h1 {
     border: 2px solid white;
     display:inline;

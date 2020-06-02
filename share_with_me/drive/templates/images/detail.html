@@ -1,5 +1,7 @@
 {% extends "images/base.html" %} {% block content %}
-<p><a href="{% url 'drive:images:list' course specialty subject %}">Back</a></p>
+
+<h3><a href="{% url 'drive:images:list' course specialty subject %}" 
+    style="float: right;">Back</a></h3>
 
 <p> Created at: {{image.created_at}} </p>
 
@@ -8,7 +10,8 @@
 {% endif %}
 
 {% if image.file %}
-    <p><button><a href="{{image.file.url}}">Download File</a></button></p>
+    <u><a href="{{image.file.url}}">Download File</a></u>
+    <!-- <p><button><a href="{{image.file.url}}">Download File</a></button></p> -->
 {% else %}
     <img src="{{image.image.url}}" />
 {% endif %}

@@ -1,8 +1,8 @@
 {% extends "images/base.html" %} {% block content %}
-<p><a href="{% url 'drive:images:detail_subject' course specialty subject %}">Back</a></p>
+
+<h3><a href="{% url 'drive:images:detail_subject' course specialty subject %}" style="float: right;">Back</a></h3>
 
 <h2>Uploading files for: <strong>{{ subject }} </h2>
-<h3>Add new file</h3>
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}

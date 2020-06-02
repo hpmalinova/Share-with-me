@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-# from django.views.generic import CreateView
 from django.urls import reverse
 from drive.models import Image, Courses
 
