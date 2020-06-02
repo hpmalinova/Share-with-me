@@ -2,14 +2,15 @@
 <p><a href="{% url 'drive:images:list' course specialty subject %}">Back</a></p>
 
 <p> Created at: {{image.created_at}} </p>
-<p>    Description: {{image.description}} </p>
 
-<img src="{{image.image.url}}" />
+{% if image.description %}
+<p> Description: {{image.description}} </p>
+{% endif %}
 
 {% if image.file %}
-    <embed src="{{image.file}}" type="application/pdf">
-        <p><a href="{{image.file.url}}">Download File</a>.</p>
-    </embed>
+    <p><button><a href="{{image.file.url}}">Download File</a></button></p>
+{% else %}
+    <img src="{{image.image.url}}" />
 {% endif %}
 
 {% endblock %}
