@@ -4,6 +4,7 @@ from django.urls import reverse
 from drive.models import Image, Courses
 
 from django import forms
+from django.http import HttpResponse
 
 
 class ImageForm(forms.ModelForm):
@@ -140,3 +141,20 @@ def detail(request, course, specialty, subject, image_id):
             'image': image,
         }
     )
+
+
+def search(request):
+    print(request.path)
+    if 'q' in request.GET:
+        message = request.GET['q']
+        courses = Courses.objects.filter(subject__contains=message)
+        return render(
+            request,
+            'images/search.html',
+            {
+                'courses': courses
+            }
+        )
+    else:
+        message = "You submitted an empty form."
+    return HttpResponse(message)
