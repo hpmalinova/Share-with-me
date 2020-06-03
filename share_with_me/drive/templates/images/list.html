@@ -1,13 +1,19 @@
 {% extends "images/base.html" %} {% block content %}
 
-<h3><a href="{% url 'drive:images:detail_subject' course specialty subject %}" style="float: right;">Back</a></h3>
-
-{% if images %}
-<ul>
-  {% for image in images %}
-  <li><a href="{% url 'drive:images:detail' course specialty subject image.id %}">{{ image.image_tag }}</a></li>
-  {% endfor %}
-</ul>
-{% else %}
-<p><strong>No files yet.</strong></p>
-{% endif %} {% endblock %}
+<div class="courses">
+    <div class="center">
+        <p style="font-size: 30px;">{{subject}} files</p>
+    </div>
+    {% if images %}
+    <ul>
+        {% for image in images %}
+            <li style="display: inline;"><a href="{% url 'drive:images:detail' course specialty subject image.id %}">{{ image.image_tag }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="center sharewithme">
+        <p style="font-size: 30px;"><strong>No files yet.</strong></p>
+    </div>
+    {% endif %} 
+</div>
+{% endblock %}

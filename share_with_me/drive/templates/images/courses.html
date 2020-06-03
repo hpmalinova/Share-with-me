@@ -1,15 +1,22 @@
 {% extends "images/base.html" %} {% block content %}
 
-<h3><a href="{% url 'drive:images:base' %}" style="float: right;">Back</a></h3>
-
-<h1>Choose Course</h1>
-
-{% if courses %}
-<ul>
-  {% for course in courses %}
-  <li><a href="{% url 'drive:images:speciality' course %}">Course:{{ course }}</a></li>
-  {% endfor %}
-</ul>
-{% else %}
-<p><strong>No courses yet.</strong></p>
-{% endif %} {% endblock %}
+<div class="courses">
+    <h1>Choose Course</h1>
+    <div style="position: absolute; top:39.5%; right:80%;" class="circle"></div>
+    <div style="position: absolute; top:39.5%; right:15%;" class="circle"></div>
+    {% if courses %}
+        <ul>
+          {% for course in courses %}
+          <li><a href="{% url 'drive:images:speciality' course %}">Year: {{ course }}</a></li>
+          {% endfor %}
+        </ul>
+        <div class="center sharewithme">
+            <p>Choose the year for which<br>you want to<br>lookup / upload</p>
+        </div>
+    {% else %}
+        <div class="center sharewithme">
+            <p style="font-size: 30px;"><strong>No courses yet.</strong></p>
+        </div>
+    {% endif %} 
+</div>
+{% endblock %}

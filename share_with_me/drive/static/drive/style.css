@@ -65,39 +65,55 @@
     text-align: center;
 }
 
-/* ul */
+.welcome button {
+    width: 6em;
+    height: 100%;
+    background-color: #ff0040;
+    font-size: 50px;
+    font-family: blockletter;
+    color: white;
+    border: none;
+}
 
-ul {
+.welcome button:hover span {
+    display: none;
+}
+
+.welcome button:hover:before {
+    content: "ENTER";
+}
+
+.welcome a {
+    display: block;
+    font-family: 'blockletter';
+    text-decoration: none;
+    padding: 8px;
+    background-color: #ff0040;
+    color: white;
+}
+
+
+.menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #ff0040;
   border-bottom: 4px solid white;
+  position:relative;
+  z-index: 5;
 }
 
-/* ul */
-
-/* li a:hover; */
-
-li a:hover {
+.menu li a:hover {
   background-color: #ff2040;
   display: block;
 }
 
-/* li a */
-
-/* li */
-
-li {
+.menu li {
   float: right;
 }
 
-/* li */
-
-/* a */
-
-a {
+.menu a {
     display: block;
     font-family: 'blockletter';
     text-decoration: none;
@@ -105,28 +121,83 @@ a {
     background-color: #ff0040;
 }
 
-a:link {
+.menu a:link {
     color: white;
     background-color: #ff0040;
 }
 
-a:visited {
+.menu a:visited {
   color: white;
   background-color: #ff0040;
 }
 
-/* a */
-
-h1 {
+.menu h1 {
     display: inline;
     text-align: center;
     color: white;
 }
 
-p {
+.menu p {
   font-size: 15px;
   color: #949494;
   font-family: 'blockletter';
+}
+
+/* COURSES */
+
+.courses a {
+    display: inline;
+    font-family: 'blockletter';
+    text-decoration: none;
+    padding: 8px;
+}
+
+.courses a:link {
+  color: #949494;
+}
+
+.courses a:visited {
+  color: #949494;
+}
+
+.courses li {
+  text-align: center;
+}
+
+.courses ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #949494;
+  position:relative;
+  font-size: 50px;
+}
+
+.courses h1 {
+  font-family: 'blockletter';
+  font-size: 70px;
+  text-decoration: none;
+  text-align: center;
+  color: #949494;
+}
+
+.courses p {
+  font-size: 15px;
+  color: #949494;
+  font-family: 'blockletter';
+}
+
+.rectangle {
+  height: 150px;
+  width: 10px;
+  background-color: #ff0040;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: #ff0040;
+  border-radius: 50%;
 }
 
 /* Blockletter Font */

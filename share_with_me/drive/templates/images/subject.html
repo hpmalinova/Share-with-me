@@ -1,15 +1,22 @@
 {% extends "images/base.html" %} {% block content %}
-<h3><a href="{% url 'drive:images:speciality' course %}" style="float: right;">Back</a></h3>
 
-<h2>Subjects</h2>
-
-{% if subjects %}
-<ul>
-  {% for subject in subjects %}
-  <li><p><a href="{% url 'drive:images:detail_subject' course specialty subject %}">{{ subject }}</a></p></li>
-  {% endfor %}
-</ul>
-{% else %}
-<p><strong>No subjects yet.</strong></p>
-{% endif %}
+<div class="courses">
+    <h1>Subjects</h1>
+    <div style="position: absolute; top:39.5%; right:80%;" class="circle"></div>
+    <div style="position: absolute; top:39.5%; right:15%;" class="circle"></div>
+    {% if subjects %}
+      <ul>
+        {% for subject in subjects %}
+        <li><a href="{% url 'drive:images:detail_subject' course specialty subject %}">{{ subject }}</a></li>
+        {% endfor %}
+      </ul>
+      <div class="center sharewithme">
+                <p>Choose the subject for which<br>you want to<br>lookup / upload</p>
+      </div>
+    {% else %}
+      <div class="center sharewithme">
+          <p style="font-size: 30px;"><strong>No subjects yet.</strong></p>
+      </div>
+    {% endif %}
+</div>
 {% endblock %}

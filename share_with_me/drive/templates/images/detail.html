@@ -1,19 +1,27 @@
 {% extends "images/base.html" %} {% block content %}
+<div class="courses">
+    <div class="center">
+        <p style="display:inline; text-align: left;"> Uploaded: {{image.created_at}} </p>
+    </div>
 
-<h3><a href="{% url 'drive:images:list' course specialty subject %}" 
-    style="float: right;">Back</a></h3>
+    {% if image.description %}
+    <div class="center">
+        <p style="text-align:center; display:inline;     top:50%"> Description: {{image.description}} </p>
+    </div>
+    {% endif %}
 
-<p> Created at: {{image.created_at}} </p>
-
-{% if image.description %}
-<p> Description: {{image.description}} </p>
-{% endif %}
-
-{% if image.file %}
-    <u><a href="{{image.file.url}}">Download File</a></u>
-    <!-- <p><button><a href="{{image.file.url}}">Download File</a></button></p> -->
-{% else %}
-    <img src="{{image.image.url}}" />
-{% endif %}
-
+    {% if image.file %}
+        <div class="center">
+            <img style="max-height: 50%; max-width: 50%;" src="{{image.image.url}}" />
+            
+        </div>
+        <div class="center">
+            <button style=><a href="{{image.file.url}}">Download File</a></button>
+        </div>
+    {% else %}
+    <div class="center">
+        <img style="max-height: 50%; max-width: 50%;" src="{{image.image.url}}" />
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
