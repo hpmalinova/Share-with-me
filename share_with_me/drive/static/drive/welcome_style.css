@@ -20,33 +20,13 @@ button:hover:before {content: "ENTER"}
     text-align: center;
 }
 
-/* a */
-
 a {
+    display: block;
     font-family: 'blockletter';
     text-decoration: none;
-}
-
-a:link {
+    padding: 8px;
+    background-color: #ff0040;
     color: white;
-}
-
-a:visited {
-  color: white;
-}
-
-/* a */
-
-h1 {
-    display: inline;
-    text-align: center;
-    color: white;
-}
-
-div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
 }
 
 /* Blockletter Font */

@@ -1,17 +1,33 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'drive/style.css' %}">
+<link rel="stylesheet" href="{% static 'drive/base_style.css' %}">
+
+
 <style>
     body {
         background-color: #eaeaea;
+        margin:0;
     }
 </style>
-<h1><a href="{% url 'drive:images:base' %}">Home</a></h1>
-<h1><a href="{% url 'drive:images:courses' %}">Courses</a></h1>
-
-<div class="center search">
-    <form method="GET" action="{% url 'drive:images:search'%}" id="searchform">
-        <input STYLE="color: #FFFFFF; font-weight: font-size: 12px; background-color: #000000;" size="23" class="searchfield" id="searchbox" name="q" type="text" value="{{ request.GET.q }}" placeholder="Search Course..."/>
-    </form>
+<div id="topMenu">
+    <span style="z-index: -1" class="dot2"></span>
+    <ul>
+        <li style="float:left; padding-left: 198px; font-weight: bold;"><a href="{% url 'drive:images:base' %}">ShareWithMe</a></li>
+        <li><a href="{% url 'drive:images:courses' %}">Courses</a></li>
+        <li><a href="{% url 'drive:images:base' %}">Home</a></li>
+        <li><a href="{% url 'drive:images:base' %}">
+            <img src="/static/mg.png" alt="Search" width="22.5" height="22.5"></a></li>
+    </ul>
+    <span class="dot"></span>
+    <div class="center findforme">
+        <h1 style="color: #949494;">FIND FOR ME</h1>
+    </div>
+    <div class="center sharewithme">
+        <form method="GET" action="{% url 'drive:images:search'%}" id="searchform">
+            <input style="color: #949494; font-weight: bold; font-size: 25px; background-color: #FFFFFF; border-radius: 0.3em;" size="16" class="searchfield" id="searchbox" name="q" type="text" value="{{ request.GET.q }}" placeholder="Search..."/>
+            <button style="border: none; height:32; background-color: #ff0040" type="submit"><img src="/static/mg.png" alt="Search" width="22.5" height="22.5"></button>
+        </form>
+        <p>You can use the search engine<br>or just navigate the site<br>through the menu<br>on top</p>
+    </div>
 </div>
-<hr>
 {% block content %} {% endblock %}
+

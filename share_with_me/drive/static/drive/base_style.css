@@ -1,0 +1,136 @@
+#topMenu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+  background-color: #3A3D70;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #ff0040;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 300;
+  left: -352;
+  right: 0;
+  margin: auto;
+}
+
+.dot2 {
+  height: 115px;
+  width: 115px;
+  background-color: #ff0040;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 600;
+  left: -800;
+  right: 0;
+  margin: auto;
+}
+
+.sharewithme {
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: blockletter;
+  margin: auto;
+  font-size: 50px;
+}
+
+.findforme {
+    width: 100px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: blockletter;
+    margin: auto;
+    font-size: 50px;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+/* ul */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ff0040;
+  border-bottom: 4px solid white;
+}
+
+/* ul */
+
+/* li a:hover; */
+
+li a:hover {
+  background-color: #ff2040;
+  display: block;
+}
+
+/* li a */
+
+/* li */
+
+li {
+  float: right;
+}
+
+/* li */
+
+/* a */
+
+a {
+    display: block;
+    font-family: 'blockletter';
+    text-decoration: none;
+    padding: 8px;
+    background-color: #ff0040;
+}
+
+a:link {
+    color: white;
+    background-color: #ff0040;
+}
+
+a:visited {
+  color: white;
+  background-color: #ff0040;
+}
+
+/* a */
+
+h1 {
+    display: inline;
+    text-align: center;
+    color: white;
+}
+
+p {
+  font-size: 15px;
+  color: #949494;
+  font-family: 'blockletter';
+}
+
+/* Blockletter Font */
+@font-face {
+  font-family: 'blockletter';
+  src: url('fonts/blockletter.otf') format("truetype");
+}
