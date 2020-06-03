@@ -3,7 +3,8 @@ from django.urls import reverse
 from drive.models import Image, Courses
 
 from django import forms
-from django.http import HttpResponse
+from django.db.models import Q
+# from django.http import HttpResponse
 
 
 class ImageForm(forms.ModelForm):
@@ -127,17 +128,33 @@ def detail(request, path, image_id):
 
 
 def search(request):
-    print(request.path)
-    if 'q' in request.GET:
+    something_found = False
+    if request.GET.get('q'):
         message = request.GET['q']
-        courses = Courses.objects.filter(subject__contains=message)
+        found_subjects = Courses.objects.filter(subject__contains=message)
+        found_specialties = Courses.objects.values_list('course', 'specialty')\
+                                           .filter(specialty__contains=message)\
+                                           .distinct().order_by('course')
+        found_files = Image.objects.filter(Q(image__contains=message) | Q(file__contains=message))
+        if found_subjects or found_specialties or found_files:
+            something_found = True
+
         return render(
             request,
             'images/search.html',
             {
-                'courses': courses
+                'something_found': something_found,
+                'found_subjects': found_subjects,
+                'found_specialties': found_specialties,
+                'found_files': found_files,
             }
         )
     else:
         message = "You submitted an empty form."
-    return HttpResponse(message)
+        return render(
+            request,
+            'images/search.html',
+            {
+                'something_found': something_found,
+            }
+        )

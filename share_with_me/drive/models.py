@@ -36,7 +36,13 @@ class Image(models.Model):
     file = models.FileField(upload_to=content_file_name, blank=True, null=True)
 
     def image_tag(self):
-        return mark_safe('<img src="{}" width="250" height="150" />'.format(self.image.url))
+        if self.file:
+            return mark_safe(f'<img src="{self.image.url}" title="{self.file.url}" width="250" height="150" />')
+        else:
+            return mark_safe(f'<img src="{self.image.url}" title="{self.image.url}" width="250" height="150" />')
+
+    def path_to_file(self):
+        return str(self.course_path)
 
     image_tag.short_description = 'ImageTag'
     image_tag.allow_tags = True
