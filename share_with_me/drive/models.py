@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Courses(models.Model):
@@ -49,3 +50,11 @@ class Image(models.Model):
 
     def __str__(self):
         return str(self.image)
+
+
+class Comments(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    username = models.CharField(max_length=50)
+    comment = models.TextField()
+    rating = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
+    file = models.ForeignKey(Image, on_delete=models.CASCADE)

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from drive.models import Image, Courses
+from drive.models import Image, Courses, Comments
 
 from django import forms
 from django.db.models import Q
@@ -11,6 +11,12 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
         fields = ('description', 'file',)
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ('username', 'comment', 'rating')
 
 
 def base(request):
@@ -116,13 +122,14 @@ def list(request, path):
 
 def detail(request, path, image_id):
     image = get_object_or_404(Image, id=image_id)
-
+    comments = Comments.objects.filter(file=image)
     return render(
         request,
         'images/detail.html',
         {
             'path': path,
             'image': image,
+            'comments': comments,
         }
     )
 
@@ -156,5 +163,39 @@ def search(request):
             'images/search.html',
             {
                 'something_found': something_found,
+            }
+        )
+
+
+def add_comment(request, path, image_id):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        file = Image.objects.filter(id=image_id).first()
+
+        if form.is_valid() and file:
+            instance = form.save(commit=False)
+            instance.file = file
+            instance.save()
+            return redirect(reverse('drive:images:detail',
+                                    args=[path, image_id]))
+        else:
+            return render(
+                request,
+                'images/add_comment.html',
+                {
+                    'form': form,
+                    'path': path,
+                    'image_id': image_id,
+                }
+            )
+    else:
+        form = CommentForm()
+        return render(
+            request,
+            'images/upload_file.html',
+            {
+                'form': form,
+                'path': path,
+                'image_id': image_id,
             }
         )

@@ -11,9 +11,25 @@
 
 {% if image.file %}
     <u><a href="{{image.file.url}}">Download File</a></u>
-    <!-- <p><button><a href="{{image.file.url}}">Download File</a></button></p> -->
 {% else %}
     <img src="{{image.image.url}}" />
+{% endif %}
+
+<h1> Comments: </h1>
+<u><a href="{% url 'drive:images:add_comment' path image.id%}" style="float: right;">Add comment</a></u>
+
+{% if comments %}
+<ul>
+  {% for comment in comments %}
+    <hr>
+    <p>Created: {{comment.created_at}}</p>
+    <p>Username: {{comment.username}}</p>
+    <p>Comment: {{comment.comment}}</p>
+    <hr>
+  {% endfor %}
+</ul>
+{% else %}
+<p><strong>No comments yet.</strong></p>
 {% endif %}
 
 {% endblock %}

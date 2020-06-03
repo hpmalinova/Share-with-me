@@ -15,6 +15,7 @@ images_patterns = [
     # path('courses/<int:course>/<str:specialty>/<str:subject>/list', images.list, name='list'),
     path('courses/<path:path>/list/', images.list, name='list'),
     path('courses/<path:path>/<int:image_id>/', images.detail, name='detail'),
+    path('courses/<path:path>/<int:image_id>/add-comment', images.add_comment, name='add_comment'),
     path('search/', images.search, name='search')
 ]
 
