@@ -7,3 +7,20 @@
 <div class="center vertical2">
     <h2><a href="{% url 'drive:images:base' %}">Enter</a></h2>
 </div>
+
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<div class="footer">
+    <h3> Subjects: {{num_subjects}} </h3>
+    <h3> Files: {{num_files}} </h3>
+<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+</div>
