@@ -11,10 +11,6 @@
 
     {% if image.file %}
         <div class="center">
-            <img style="max-height: 50%; max-width: 50%;" src="{{image.image.url}}" />
-            
-        </div>
-        <div class="center">
             <button style=><a href="{{image.file.url}}">Download File</a></button>
         </div>
     {% else %}
@@ -23,7 +19,7 @@
     </div>
     {% endif %}
     <h1> Comments: </h1>
-    <u><a href="{% url 'drive:images:add_comment' path image.id%}" style="float: right;">Add comment</a></u>
+    <a href="{% url 'drive:images:add_comment' path image.id%}">Add comment</a>
 
     {% if comments %}
     <ul>

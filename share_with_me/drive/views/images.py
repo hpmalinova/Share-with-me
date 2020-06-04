@@ -192,7 +192,7 @@ def add_comment(request, path, image_id):
         form = CommentForm()
         return render(
             request,
-            'images/upload_file.html',
+            'images/add_comment.html',
             {
                 'form': form,
                 'path': path,
