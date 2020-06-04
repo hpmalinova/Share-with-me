@@ -21,5 +21,5 @@ images_patterns = [
 
 urlpatterns = [
     path('', index, name='index'),
-    path('drive/', include((images_patterns, 'images')))
+    path('home/', include((images_patterns, 'images')))
 ]

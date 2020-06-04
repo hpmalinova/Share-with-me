@@ -1,35 +1,42 @@
 {% extends "images/base.html" %} {% block content %}
+<div class="courses">
+    <div class="center">
+        <p style="display:inline; text-align: left;"> Uploaded: {{image.created_at}} </p>
+    </div>
+    {% if image.description %}
+    <div class="center">
+        <p style="text-align:center; display:inline;     top:50%"> Description: {{image.description}} </p>
+    </div>
+    {% endif %}
 
-<h3><a href="{% url 'drive:images:list' path %}" 
-    style="float: right;">Back</a></h3>
+    {% if image.file %}
+        <div class="center">
+            <img style="max-height: 50%; max-width: 50%;" src="{{image.image.url}}" />
+            
+        </div>
+        <div class="center">
+            <button style=><a href="{{image.file.url}}">Download File</a></button>
+        </div>
+    {% else %}
+    <div class="center">
+        <img style="max-height: 50%; max-width: 50%;" src="{{image.image.url}}" />
+    </div>
+    {% endif %}
+    <h1> Comments: </h1>
+    <u><a href="{% url 'drive:images:add_comment' path image.id%}" style="float: right;">Add comment</a></u>
 
-<p> Created at: {{image.created_at}} </p>
-
-{% if image.description %}
-<p> Description: {{image.description}} </p>
-{% endif %}
-
-{% if image.file %}
-    <u><a href="{{image.file.url}}">Download File</a></u>
-{% else %}
-    <img src="{{image.image.url}}" />
-{% endif %}
-
-<h1> Comments: </h1>
-<u><a href="{% url 'drive:images:add_comment' path image.id%}" style="float: right;">Add comment</a></u>
-
-{% if comments %}
-<ul>
-  {% for comment in comments %}
-    <hr>
-    <p>Created: {{comment.created_at}}</p>
-    <p>Username: {{comment.username}}</p>
-    <p>Comment: {{comment.comment}}</p>
-    <hr>
-  {% endfor %}
-</ul>
-{% else %}
-<p><strong>No comments yet.</strong></p>
-{% endif %}
-
+    {% if comments %}
+    <ul>
+      {% for comment in comments %}
+        <hr>
+        <p>Created: {{comment.created_at}}</p>
+        <p>Username: {{comment.username}}</p>
+        <p>Comment: {{comment.comment}}</p>
+        <hr>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p><strong>No comments yet.</strong></p>
+    {% endif %}
+</div>
 {% endblock %}

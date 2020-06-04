@@ -1,8 +1,16 @@
 {% extends "images/base.html" %} {% block content %}
-<h3><a href="{% url 'drive:images:subject' course.course course.specialty %}" style="float: right;">Back</a></h3>
 
-<h2><strong>{{ course.subject }} </strong></h2>
-<p><a href="{% url 'drive:images:upload_file' course.path %}">Upload file</a></p>
-<p><a href="{% url 'drive:images:list' course.path %}">Show files</a></p>
-
+<div class="courses">
+    <h1><strong>{{ course.subject }} </strong></h1>
+    <ul style="text-align: center;">
+        <li style="display: inline; padding-right: 100px;"><a href="{% url 'drive:images:upload_file' course.path %}">Upload file</a></li>
+        <li style="display: inline; padding-left: 100px;"><a href="{% url 'drive:images:list' course.path %}">Show files</a></li>
+    </ul>
+    <div style="position: absolute; top:33%; right:50%;" class="rectangle"></div>
+    <div style="position: absolute; top:39.5%; right:80%;" class="circle"></div>
+    <div style="position: absolute; top:39.5%; right:15%;" class="circle"></div>
+    <div class="center sharewithme">
+        <p style="margin-top: 10em;">You can either look through the files<br>or upload one yourself</p>
+    </div>
+</div>
 {% endblock %}

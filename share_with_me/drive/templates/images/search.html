@@ -1,6 +1,7 @@
 {% extends "images/base.html" %} {% block content %}
 
-{% if something_found %}
+<div class="courses">
+  {% if something_found %}
     {% if found_subjects %}
         <p>Found subjects: </p>
         <ul>
@@ -33,4 +34,5 @@
 {% else %}
     <p><strong>No matches found.</strong></p>
 {% endif %} 
+</div>
 {% endblock %}

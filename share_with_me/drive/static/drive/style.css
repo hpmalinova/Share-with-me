@@ -1,37 +1,63 @@
-body {
-    background-color: black;
-}
-h2, h3, li {
-    color: white;
-    display: inline;
-}
-
-h3 {
-    display:inline;
-    text-align: right;
-    color: white;
+#topMenu {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+  background-color: #3A3D70;
 }
 
-h1 {
-    border: 2px solid white;
-    display:inline;
-    text-align: center;
-    color: white;
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #ff0040;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 300;
+  left: -352;
+  right: 0;
+  margin: auto;
 }
 
-p {
-    color: white;
+.dot2 {
+  height: 115px;
+  width: 115px;
+  background-color: #ff0040;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 600;
+  left: -800;
+  right: 0;
+  margin: auto;
 }
 
-label {
-    color:white;
+.sharewithme {
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: blockletter;
+  margin: auto;
+  font-size: 50px;
 }
 
-
-a {
-    color: white;
-    display: inline;
-    text-decoration: none;
+.findforme {
+    width: 100px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: blockletter;
+    margin: auto;
+    font-size: 50px;
 }
 
 .center {
@@ -39,53 +65,143 @@ a {
     text-align: center;
 }
 
-.vertical {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
+.welcome button {
+    width: 6em;
+    height: 100%;
+    background-color: #ff0040;
+    font-size: 50px;
+    font-family: blockletter;
+    color: white;
+    border: none;
 }
 
-.center.vertical {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
-    width: 100%;
+.welcome button:hover span {
+    display: none;
+}
+
+.welcome button:hover:before {
+    content: "ENTER";
+}
+
+.welcome a {
+    display: block;
+    font-family: 'blockletter';
+    text-decoration: none;
+    padding: 8px;
+    background-color: #ff0040;
+    color: white;
+}
+
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ff0040;
+  border-bottom: 4px solid white;
+  position:relative;
+  z-index: 5;
+}
+
+.menu li a:hover {
+  background-color: #ff2040;
+  display: block;
+}
+
+.menu li {
+  float: right;
+}
+
+.menu a {
+    display: block;
+    font-family: 'blockletter';
+    text-decoration: none;
+    padding: 8px;
+    background-color: #ff0040;
+}
+
+.menu a:link {
+    color: white;
+    background-color: #ff0040;
+}
+
+.menu a:visited {
+  color: white;
+  background-color: #ff0040;
+}
+
+.menu h1 {
+    display: inline;
     text-align: center;
+    color: white;
 }
 
-.center.vertical2 {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top:100;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    margin: auto;
-    width: 100%;
-    text-align: center;
+.menu p {
+  font-size: 15px;
+  color: #949494;
+  font-family: 'blockletter';
 }
 
-.center.search {
-    background-color:black;
-    height: 30px;
-    top: 10px;
-    width:150%;
-    margin: auto;
-    text-align: left;
-    position:relative;
-    display:inline;
+/* COURSES */
+
+.courses a {
+    display: inline;
+    font-family: 'blockletter';
+    text-decoration: none;
+    padding: 8px;
+}
+
+.courses a:link {
+  color: #949494;
+}
+
+.courses a:visited {
+  color: #949494;
+}
+
+.courses li {
+  text-align: center;
+}
+
+.courses ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #949494;
+  position:relative;
+  font-size: 50px;
+}
+
+.courses h1 {
+  font-family: 'blockletter';
+  font-size: 70px;
+  text-decoration: none;
+  text-align: center;
+  color: #949494;
+}
+
+.courses p {
+  font-size: 15px;
+  color: #949494;
+  font-family: 'blockletter';
+}
+
+.rectangle {
+  height: 150px;
+  width: 10px;
+  background-color: #ff0040;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: #ff0040;
+  border-radius: 50%;
+}
+
+/* Blockletter Font */
+@font-face {
+  font-family: 'blockletter';
+  src: url('fonts/blockletter.otf') format("truetype");
 }

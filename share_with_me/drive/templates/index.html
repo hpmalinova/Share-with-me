@@ -1,13 +1,10 @@
 {% load static %}
+<style>
+    body {
+        background-color: #ff0040;
+    }
+</style>
 <link rel="stylesheet" href="{% static 'drive/style.css' %}">
-<div class="center vertical">
-    <h1>Share With Me</h1>
-</div>
-
-<div class="center vertical2">
-    <h2><a href="{% url 'drive:images:base' %}">Enter</a></h2>
-</div>
-
 <style>
 .footer {
   position: fixed;
@@ -18,9 +15,16 @@
   text-align: center;
 }
 </style>
+<body>
+  <div class="footer">
+      <h3> Subjects: {{num_subjects}} </h3>
+      <h3> Files: {{num_files}} </h3>
+  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+  </div>
 
-<div class="footer">
-    <h3> Subjects: {{num_subjects}} </h3>
-    <h3> Files: {{num_files}} </h3>
-<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
-</div>
+    <div class="welcome">
+        <div class="center sharewithme" style="height: 100px;">
+            <button onclick="location.href={% url 'drive:images:base' %}" type="button"><span><a class="welcome" href="{% url 'drive:images:base' %}">SHAREWITHME</a></span></button>
+        </div>
+    </div>
+</body>
