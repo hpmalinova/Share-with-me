@@ -3,36 +3,36 @@
 <div class="courses">
   {% if something_found %}
     {% if found_subjects %}
-        <p>Found subjects: </p>
-        <ul>
-          {% for course in found_subjects %}
-          <li><a href="{% url 'drive:images:detail_subject' course.course course.specialty course.subject%}">{{ course.subject }}</a></li>
-          {% endfor %}
-        </ul>
+      <h1>Found subjects:</h1>
+      <ul class="center sharewithme">
+        {% for course in found_subjects %}
+          <li style="position:static;display:inline-block;"><a href="{% url 'drive:images:detail_subject' course.course course.specialty course.subject%}">{{ course.subject }}</a></li>
+        {% endfor %}
+      </ul>
     {% endif %} 
 
     {% if found_specialties %}
-    <p>Found specialties: </p>
-    <ul>
-      {% for course, specialty in found_specialties %}
-      <li><p><a href="{% url 'drive:images:subject' course specialty%}">
-            {{course}} - {{ specialty }}</a></p></li>
-      {% endfor %}
-    </ul>
+      <h1>Found specialties:</h1>
+      <ul class="center sharewithme">
+        {% for course, specialty in found_specialties %}
+        <li style="position:static;display:inline-table;"><a href="{% url 'drive:images:subject' course specialty%}">
+              {{course}} - {{ specialty }}</a></li>
+        {% endfor %}
+      </ul>
     {% endif %} 
 
     {% if found_files %}
-    <p>Found files: </p>
-    <ul>
-      {% for file in found_files %}
-        <li><a href="{% url 'drive:images:detail' file.course_path.path file.id %}">
-        {{ file.image_tag }}</a></li>
-      {% endfor %}
-    </ul>
+      <h1>Found files:</h1>
+      <ul class="center sharewithme">
+        {% for file in found_files %}
+          <li style="position:static;display:inline-table;"><a href="{% url 'drive:images:detail' file.course_path.path file.id %}">
+          {{ file.image_tag }}</a></li>
+        {% endfor %}
+      </ul>
     {% endif %} 
 
-{% else %}
-    <p><strong>No matches found.</strong></p>
-{% endif %} 
+  {% else %}
+      <h1><strong>No matches found.</strong></h1>
+  {% endif %} 
 </div>
 {% endblock %}

@@ -4,9 +4,9 @@
         <p style="display:inline; text-align: left;"> Uploaded: {{image.created_at}} </p>
     </div>
     {% if image.description %}
-    <div class="center">
-        <p style="text-align:center; display:inline;     top:50%"> Description: {{image.description}} </p>
-    </div>
+        <div class="center">
+            <p style="text-align:center; display:inline; top:50%"> Description: {{image.description}} </p>
+        </div>
     {% endif %}
 
     {% if image.file %}
@@ -19,20 +19,23 @@
     </div>
     {% endif %}
     <h1> Comments: </h1>
-    <a href="{% url 'drive:images:add_comment' path image.id%}">Add comment</a>
-
+    <div class="center">
+        <a href="{% url 'drive:images:add_comment' path image.id%}">Add comment</a>
+    </div>
     {% if comments %}
-    <ul>
-      {% for comment in comments %}
-        <hr>
-        <p>Created: {{comment.created_at}}</p>
-        <p>Username: {{comment.username}}</p>
-        <p>Comment: {{comment.comment}}</p>
-        <hr>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p><strong>No comments yet.</strong></p>
-    {% endif %}
+    <div class="center">
+        <ul>
+          {% for comment in comments %}
+            <hr>
+            <p>Created: {{comment.created_at}}</p>
+            <p><strong>{{comment.username}}</strong> said:</p>
+            <p>{{comment.comment}}</p>
+            <hr>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p style="text-align:center;"><strong>No comments yet.</strong></p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
