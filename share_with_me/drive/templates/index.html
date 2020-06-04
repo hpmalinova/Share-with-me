@@ -18,15 +18,15 @@
 <body>
   <div class="courses">
     <div class="footer">
-        <h3 style="font-family:blockletter;"> Subjects: {{num_subjects}} </h3>
-        <h3 style="font-family:blockletter;"> Files: {{num_files}} </h3>
-    <p style="color: white;">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+        <p style="color: white;"> Subjects: {{num_subjects}} </p>
+        <p style="color: white;"> Files: {{num_files}} </p>
+        <p style="color: white;">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
     </div>
   </div>
 
     <div class="welcome">
         <div class="center sharewithme" style="height: 100px;">
-            <button onclick="location.href={% url 'drive:images:base' %}" type="button"><span><a class="welcome" href="{% url 'drive:images:base' %}">SHAREWITHME</a></span></button>
+            <button onclick="location.href={% url 'drive:home:base' %}" type="button"><span><a class="welcome" href="{% url 'drive:home:base' %}">SHAREWITHME</a></span></button>
         </div>
     </div>
 </body>

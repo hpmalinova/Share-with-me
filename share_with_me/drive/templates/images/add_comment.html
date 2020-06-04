@@ -6,12 +6,31 @@
             <p><label style="text-align:center;" for="id_username">Username:</label></p>
             <input type="text" name="username" maxlength="50" required="" id="id_username">
             <p><label for="id_comment">Comment:</label></p>
-            <textarea name="comment" cols="40" rows="5" required="" id="id_comment"></textarea>
+            <textarea name="comment" cols="40" rows="4" required="" id="id_comment"></textarea>
             <p><label for="id_rating">Rating:</label></p>
-            <input type="number" name="rating" value="1" required="" id="id_rating">
+            <!-- <input type="number" name="rating" value="1" required="" id="id_rating" min="1" max="5"> -->
           {% csrf_token %}
           <!-- {{ form.as_p }} -->
-          <br>
+          <div class="radioGroupBelow">
+            <span class="star-rating">
+            <label>1
+              <input type="radio" name="rating" value="1" id="id_rating" required=""><i></i>
+            </label>
+            <label>2
+              <input type="radio" name="rating" value="2" id="id_rating" required=""><i></i>
+            </label>
+            <label>3
+              <input type="radio" name="rating" value="3" id="id_rating" required=""><i></i>
+            </label>
+            <label>4
+              <input type="radio" name="rating" value="4" id="id_rating" required=""><i></i>
+            </label>
+            <label>5
+              <input type="radio" name="rating" value="5" id="id_rating" required=""><i></i>
+            </label>
+            </span>
+            <br>
+          </div>
           <button type="submit">Add Comment</button>
       </div>
     </form>

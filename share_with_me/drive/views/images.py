@@ -199,3 +199,10 @@ def add_comment(request, path, image_id):
                 'image_id': image_id,
             }
         )
+
+
+def about(request):
+    return render(
+        request,
+        'images/about.html',
+    )
