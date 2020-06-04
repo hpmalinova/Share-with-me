@@ -16,10 +16,12 @@
 }
 </style>
 <body>
-  <div class="footer">
-      <h3> Subjects: {{num_subjects}} </h3>
-      <h3> Files: {{num_files}} </h3>
-  <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+  <div class="courses">
+    <div class="footer">
+        <h3 style="font-family:blockletter;"> Subjects: {{num_subjects}} </h3>
+        <h3 style="font-family:blockletter;"> Files: {{num_files}} </h3>
+    <p style="color: white;">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+    </div>
   </div>
 
     <div class="welcome">

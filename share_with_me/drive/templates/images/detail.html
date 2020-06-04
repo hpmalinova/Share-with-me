@@ -4,9 +4,9 @@
         <p style="display:inline; text-align: left;"> Uploaded: {{image.created_at}} </p>
     </div>
     {% if image.description %}
-    <div class="center">
-        <p style="text-align:center; display:inline;     top:50%"> Description: {{image.description}} </p>
-    </div>
+        <div class="center">
+            <p style="text-align:center; display:inline; top:50%"> Description: {{image.description}} </p>
+        </div>
     {% endif %}
 
     {% if image.file %}
@@ -14,25 +14,34 @@
             <button style=><a href="{{image.file.url}}">Download File</a></button>
         </div>
     {% else %}
-    <div class="center">
+        <div class="center">
         <img style="max-height: 50%; max-width: 50%;" src="{{image.image.url}}" />
+        </div>
+    {% endif %}
+    <div class="center">
+        <h1 style="font-size:15px;"><a href="{% url 'drive:images:add_comment' path image.id%}">Add comment</a></h1>
     </div>
-    {% endif %}
-    <h1> Comments: </h1>
-    <a href="{% url 'drive:images:add_comment' path image.id%}">Add comment</a>
-
+    <h1 style="font-size:25px;"> Comments</h1>
+    
     {% if comments %}
-    <ul>
-      {% for comment in comments %}
-        <hr>
-        <p>Created: {{comment.created_at}}</p>
-        <p>Username: {{comment.username}}</p>
-        <p>Comment: {{comment.comment}}</p>
-        <hr>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p><strong>No comments yet.</strong></p>
-    {% endif %}
+    <div class="center">
+        <ul>
+          {% for comment in comments %}
+            <div style="width:500px; margin:0 auto; display:block;word-wrap: break-word;">
+                
+                <div style="background-color: #ff0040;">
+                    <p style="color:#ffffff;background-color: #ff0040;text-align: left; padding-left:5px;"><strong>{{comment.username}}</strong> said:</p>
+                </div>
+                <div style="border:3px solid #ff0040; background-color: #ffffff;">
+                    <p style="color:#737373; text-align: left; padding-left:5px;">{{comment.comment}}</p>
+                    <p style="color:#737373;text-align: right;">{{comment.created_at}}</p>
+                </div>
+            </div>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p style="text-align:center;"><strong>No comments yet.</strong></p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

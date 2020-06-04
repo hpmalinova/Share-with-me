@@ -1,12 +1,20 @@
 {% extends "images/base.html" %} {% block content %}
-
-<h3><a href="{% url 'drive:images:detail' path image_id %}" style="float: right;">Go to file view</a></h3>
-
-<h2>Add comment:</h2>
-
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Add Comment</button>
-</form>
+<div class="courses">
+    <h1>Add comment:</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="center">
+            <p><label style="text-align:center;" for="id_username">Username:</label></p>
+            <input type="text" name="username" maxlength="50" required="" id="id_username">
+            <p><label for="id_comment">Comment:</label></p>
+            <textarea name="comment" cols="40" rows="5" required="" id="id_comment"></textarea>
+            <p><label for="id_rating">Rating:</label></p>
+            <input type="number" name="rating" value="1" required="" id="id_rating">
+          {% csrf_token %}
+          <!-- {{ form.as_p }} -->
+          <br>
+          <button type="submit">Add Comment</button>
+      </div>
+    </form>
+    <h3 style="text-align:center;"><a href="{% url 'drive:images:detail' path image_id %}">Go to file view</a></h3>
+</div>
 {% endblock %}
