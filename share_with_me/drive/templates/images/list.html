@@ -2,8 +2,9 @@
 
 <div class="courses"> 
     {% if images %}
+    <h1>{{course.subject}} files</h1>
         <ul class="center sharewithme">
-            <li style="text-align: center;font-size: 50px;">{{course.subject}} files</li>
+            
             {% for image in images %}
                 <li style="position:static;display:inline-table;"><a href="{% url 'drive:images:detail' path image.id %}">{{ image.image_tag }}</a></li>
             {% endfor %}

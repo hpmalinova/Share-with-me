@@ -22,10 +22,10 @@
 
 .dot2 {
   height: 115px;
-  width: 115px;
+  width: 100px;
   background-color: #ff0040;
   border-radius: 50%;
-  display: inline-block;
+  display: block;
   position: absolute;
   top: 0;
   bottom: 600;
