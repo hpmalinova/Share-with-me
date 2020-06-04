@@ -200,6 +200,31 @@
   border-radius: 50%;
 }
 
+.zoom a:hover {
+  transform: scale(1.2);
+}
+
+.zoom a {
+    display: inline-block;
+    font-family: 'blockletter';
+    text-decoration: none;
+    padding: 8px;
+}
+
+.radioGroupBelow label {
+  display: inline-block;
+  text-align: center;
+  font-family: 'blockletter';
+  color: #949494;
+  font-size:15px;
+  margin: 0 0.2em;
+}
+.radioGroupBelow label input[type="radio"] {
+  display: block;
+  margin: 0.5em auto;
+}
+​
+
 /* Blockletter Font */
 @font-face {
   font-family: 'blockletter';

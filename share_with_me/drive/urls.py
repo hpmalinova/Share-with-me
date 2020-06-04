@@ -5,7 +5,6 @@ from drive.views import index, images
 app_name = 'drive'
 
 images_patterns = [
-    path('', images.base, name='base'),
     path('courses/', images.courses, name='courses'),
     path('courses/<int:course>/', images.speciality, name='speciality'),
     path('courses/<int:course>/<str:specialty>/', images.subject, name='subject'),
@@ -18,7 +17,17 @@ images_patterns = [
     path('search/', images.search, name='search')
 ]
 
+home_patterns = [
+    path('', images.base, name='base'),
+]
+
+about_patterns = [
+    path('', images.about, name='about')
+]
+
 urlpatterns = [
     path('', index, name='index'),
-    path('home/', include((images_patterns, 'images')))
+    path('', include((images_patterns, 'images'))),
+    path('home/', include((home_patterns, 'home'))),
+    path('about-us/', include((about_patterns, 'info')))
 ]
