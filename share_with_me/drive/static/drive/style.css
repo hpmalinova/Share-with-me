@@ -223,6 +223,12 @@
   display: block;
   margin: 0.5em auto;
 }
+
+.center_text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
 ​
 
 /* Blockletter Font */
