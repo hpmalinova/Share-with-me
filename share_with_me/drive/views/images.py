@@ -36,10 +36,10 @@ def courses(request):
     )
 
 
-def speciality(request, course):
+def specialty(request, course):
     return render(
         request,
-        'images/speciality.html',
+        'images/specialty.html',
         {
             'course': course,
             'specialties': Courses.objects.values_list('specialty', flat=True).filter(course=course).distinct()

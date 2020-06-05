@@ -6,7 +6,7 @@ app_name = 'drive'
 
 images_patterns = [
     path('courses/', images.courses, name='courses'),
-    path('courses/<int:course>/', images.speciality, name='speciality'),
+    path('courses/<int:course>/', images.specialty, name='specialty'),
     path('courses/<int:course>/<str:specialty>/', images.subject, name='subject'),
     path('courses/<int:course>/<str:specialty>/<str:subject>/',
          images.detail_subject, name='detail_subject'),
