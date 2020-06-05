@@ -34,5 +34,5 @@ urlpatterns = [
     path('', include((images_patterns, 'images'))),
     path('home/', include((home_patterns, 'home'))),
     path('about-us/', include((about_patterns, 'info'))),
-    path('request/', include((request_patterns, 'request_folder'))),
+    path('request/', include((request_patterns, 'request'))),
 ]

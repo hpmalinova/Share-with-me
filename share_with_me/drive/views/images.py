@@ -238,7 +238,7 @@ def request_folder(request):
             print('COURSE', course)
             if not course:
                 instance.save()
-                return redirect(reverse('drive:images:base'))
+                return redirect(reverse('drive:home:base'))
         else:
             return render(
                 request,

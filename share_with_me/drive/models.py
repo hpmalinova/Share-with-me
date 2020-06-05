@@ -11,7 +11,7 @@ class Courses(models.Model):
     path = models.TextField(primary_key=True, blank=True)
 
     def save(self, *args, **kwargs):
-        self.path = f'{self.course}/{self.specialty}/{self.subject}/'
+        self.path = f'{self.course}/{self.specialty}/{self.subject}'
         super().save(*args, **kwargs)
 
 
