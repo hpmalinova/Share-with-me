@@ -2,6 +2,10 @@
 <div class="courses">
     <div class="center">
         <p style="display:inline; text-align: left;"> Uploaded: {{image.created_at}} </p>
+        {% if avg_rating %}
+            <p style="font-size:25px;"><strong>* Rating: {{avg_rating}}/5 *</strong></p>
+        {% endif %}
+
     </div>
     {% if image.description %}
         <div class="center">
@@ -28,7 +32,6 @@
     
     {% if comments %}
     <div class="center">
-        <p style="font-size:25px;"><strong>* Rating: {{avg_rating}}/5 *</strong></p>
         <ul>
           {% for comment in comments %}
             <div style="width:500px; margin:0 auto; display:block;word-wrap: break-word;">
