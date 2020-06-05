@@ -14,7 +14,7 @@ images_patterns = [
     path('courses/<path:path>/list/', images.list, name='list'),
     path('courses/<path:path>/<int:image_id>/', images.detail, name='detail'),
     path('courses/<path:path>/<int:image_id>/add-comment', images.add_comment, name='add_comment'),
-    path('search/', images.search, name='search')
+    path('search/', images.search, name='search'),
 ]
 
 home_patterns = [
@@ -25,9 +25,14 @@ about_patterns = [
     path('', images.about, name='about')
 ]
 
+request_patterns = [
+    path('', images.request_folder, name='request_folder')
+]
+
 urlpatterns = [
     path('', index, name='index'),
     path('', include((images_patterns, 'images'))),
     path('home/', include((home_patterns, 'home'))),
-    path('about-us/', include((about_patterns, 'info')))
+    path('about-us/', include((about_patterns, 'info'))),
+    path('request/', include((request_patterns, 'request'))),
 ]

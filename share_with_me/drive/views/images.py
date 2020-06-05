@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from drive.models import Image, Courses, Comments
+from drive.models import Image, Courses, Comments, Requests
 
 from django import forms
 from django.db.models import Q
 from django.db.models import Sum
-# from django.http import HttpResponse
 
 
 class ImageForm(forms.ModelForm):
@@ -18,6 +17,12 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
         fields = ('username', 'comment', 'rating')
+
+
+class RequestForm(forms.ModelForm):
+    class Meta:
+        model = Requests
+        fields = ('username', 'course', 'specialty', 'subject')
 
 
 def base(request):
@@ -164,15 +169,16 @@ def search(request):
                 'found_subjects': found_subjects,
                 'found_specialties': found_specialties,
                 'found_files': found_files,
+                'error': 'No mathes found.',
             }
         )
     else:
-        message = "You submitted an empty form."
         return render(
             request,
             'images/search.html',
             {
                 'something_found': something_found,
+                'error': 'You submitted an empty search',
             }
         )
 
@@ -216,3 +222,37 @@ def about(request):
         request,
         'images/about.html',
     )
+
+
+def request_folder(request):
+    if request.method == "POST":
+        form = RequestForm(request.POST)
+        print('AAAAA', request.POST)
+        print('BBBBB', form.is_valid())
+        if form.is_valid():
+            print('HERE')
+            instance = form.save(commit=False)
+            course = Courses.objects.filter(course=instance.course,
+                                            specialty=instance.specialty,
+                                            subject=instance.subject).first()
+            print('COURSE', course)
+            if not course:
+                instance.save()
+                return redirect(reverse('drive:home:base'))
+        else:
+            return render(
+                request,
+                'images/request_folder.html',
+                {
+                    'form': form,
+                }
+            )
+    else:
+        form = RequestForm()
+        return render(
+            request,
+            'images/request_folder.html',
+            {
+                'form': form,
+            }
+        )
