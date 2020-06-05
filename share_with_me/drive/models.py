@@ -5,18 +5,10 @@ from django.core.exceptions import ValidationError
 
 
 class Courses(models.Model):
-    course = models.IntegerField()
+    course = models.IntegerField(validators=[MaxValueValidator(4), MinValueValidator(1)])
     specialty = models.CharField(max_length=30)
     subject = models.CharField(max_length=30)
     path = models.TextField(primary_key=True, blank=True)
-
-    rating_votes = models.IntegerField(default=0)
-    rating_score = models.IntegerField(default=0)
-
-    def avg_rating(self):
-        if self.rating_votes == 0:
-            return 0
-        return self.rating_votes / self.rating_score
 
     def save(self, *args, **kwargs):
         self.path = f'{self.course}/{self.specialty}/{self.subject}/'
@@ -66,8 +58,8 @@ class Comments(models.Model):
     file = models.ForeignKey(Image, on_delete=models.CASCADE)
 
 
-# class Requests(models.Model):
-#     course = models.IntegerField()
-#     specialty = models.CharField(max_length=30)
-#     subject = models.CharField(max_length=30)
-#     username = models.CharField(max_length=50)
+class Requests(models.Model):
+    username = models.CharField(max_length=50)
+    course = models.IntegerField(validators=[MaxValueValidator(4), MinValueValidator(1)])
+    specialty = models.CharField(max_length=30)
+    subject = models.CharField(max_length=30, blank=True, null=True)
