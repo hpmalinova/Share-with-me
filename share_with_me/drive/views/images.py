@@ -227,15 +227,11 @@ def about(request):
 def request_folder(request):
     if request.method == "POST":
         form = RequestForm(request.POST)
-        print('AAAAA', request.POST)
-        print('BBBBB', form.is_valid())
         if form.is_valid():
-            print('HERE')
             instance = form.save(commit=False)
             course = Courses.objects.filter(course=instance.course,
                                             specialty=instance.specialty,
                                             subject=instance.subject).first()
-            print('COURSE', course)
             if not course:
                 instance.save()
                 return redirect(reverse('drive:home:base'))

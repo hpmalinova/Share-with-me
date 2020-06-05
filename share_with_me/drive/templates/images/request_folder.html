@@ -1,29 +1,12 @@
 {% extends "images/base.html" %} {% block content %}
-<div class="courses">
-
-        <h1>Requesting:</h1>
-        <form method="POST" enctype="multipart/form-data">
-        <div class="center">
-            <div class="courses">
-                {% csrf_token %}
-                <p><label for="id_username">Username:</label>
-                <input  type="text" id="id_username" name="id_username"/></p>
-
-                <p><label for="id_course">Year:</label>
-                <input  type="text" id="id_course" name="id_course"/></p>
-
-                <p><label for="id_specialty">Specialty:</label>
-                <input  type="text" id="id_specialty" name="id_specialty"/></p>
-
-                <p><label for="id_subject">Subject:</label>
-                <input  type="text" id="id_subject" name="id_subject"/></p>
-
-            </div>
-        </div>
-        <div class="center">
-            <button type="submit">Request folder</button>
-        </div>
+<div class="center">
+    <div class="courses">
+         <h1>Request</h1>
+        <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Submit!</button>
         </form>
-
+    </div>
 </div>
 {% endblock %}
