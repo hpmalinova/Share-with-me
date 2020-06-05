@@ -4,6 +4,7 @@ from drive.models import Image, Courses, Comments
 
 from django import forms
 from django.db.models import Q
+from django.db.models import Sum
 # from django.http import HttpResponse
 
 
@@ -123,6 +124,14 @@ def list(request, path):
 def detail(request, path, image_id):
     image = get_object_or_404(Image, id=image_id)
     comments = Comments.objects.filter(file=image)
+    rating = 0
+    avg_rating = 0
+    if comments:
+        rating = comments.aggregate(Sum('rating'))['rating__sum']
+        if rating % len(comments) != 0:
+            avg_rating = round(rating / len(comments), 1)
+        else:
+            avg_rating = rating // len(comments)
     return render(
         request,
         'images/detail.html',
@@ -130,6 +139,7 @@ def detail(request, path, image_id):
             'path': path,
             'image': image,
             'comments': comments,
+            'avg_rating': avg_rating,
         }
     )
 

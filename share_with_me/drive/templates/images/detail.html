@@ -18,19 +18,23 @@
         <img style="max-height: 50%; max-width: 50%;" src="{{image.image.url}}" />
         </div>
     {% endif %}
+
+
+    <hr>
     <div class="center">
-        <h1 style="font-size:15px;"><a href="{% url 'drive:images:add_comment' path image.id%}">Add comment</a></h1>
+        <h1 style="font-size:25px;"><a href="{% url 'drive:images:add_comment' path image.id%}">Add comment</a></h1>
     </div>
-    <h1 style="font-size:25px;"> Comments</h1>
+    <h1 style="font-size:25px;"> Comments: </h1>
     
     {% if comments %}
     <div class="center">
+        <p style="font-size:25px;"><strong>* Rating: {{avg_rating}}/5 *</strong></p>
         <ul>
           {% for comment in comments %}
             <div style="width:500px; margin:0 auto; display:block;word-wrap: break-word;">
                 
                 <div style="background-color: #ff0040;">
-                    <p style="color:#ffffff;background-color: #ff0040;text-align: left; padding-left:5px;"><strong>{{comment.username}}</strong></p>
+                    <p style="color:#ffffff;background-color: #ff0040;text-align: left; padding-left:5px;"><strong>{{comment.username}} said:</strong></p>
                 </div>
                 <div style="border:3px solid #ff0040; background-color: #ffffff;">
                     <p style="color:#737373; text-align: left; padding-left:5px;">Rated: {{comment.rating}}/5</p>
