@@ -229,12 +229,25 @@ def request_folder(request):
         form = RequestForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
-            course = Courses.objects.filter(course=instance.course,
-                                            specialty=instance.specialty,
-                                            subject=instance.subject).first()
+            if instance.subject:
+                course = Courses.objects.filter(course=instance.course,
+                                                specialty=instance.specialty,
+                                                subject=instance.subject).first()
+            else:
+                course = Courses.objects.filter(course=instance.course,
+                                                specialty=instance.specialty).first()
             if not course:
                 instance.save()
                 return redirect(reverse('drive:home:base'))
+            else:
+                return render(
+                    request,
+                    'images/request_folder.html',
+                    {
+                        'form': form,
+                        'error': 'It already exists. Try the search bar!'
+                    }
+                )
         else:
             return render(
                 request,
