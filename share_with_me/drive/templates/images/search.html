@@ -4,16 +4,16 @@
   {% if something_found %}
     {% if found_subjects %}
       <h1>Found subjects:</h1>
-      <ul class="center sharewithme">
+      <ul class="center_text">
         {% for course in found_subjects %}
-          <li style="position:static;display:inline-block;"><a href="{% url 'drive:images:detail_subject' course.course course.specialty course.subject%}">{{ course.subject }}</a></li>
+          <li style="position:static;display:block;"><a href="{% url 'drive:images:detail_subject' course.course course.specialty course.subject%}">{{ course.course }} | {{ course.specialty }} - {{ course.subject }}</a></li>
         {% endfor %}
       </ul>
     {% endif %} 
 
     {% if found_specialties %}
       <h1>Found specialties:</h1>
-      <ul class="center sharewithme">
+      <ul class="center_text">
         {% for course, specialty in found_specialties %}
         <li style="position:static;display:inline-table;"><a href="{% url 'drive:images:subject' course specialty%}">
               {{course}} - {{ specialty }}</a></li>
@@ -23,7 +23,7 @@
 
     {% if found_files %}
       <h1>Found files:</h1>
-      <ul class="center sharewithme">
+      <ul class="center_text">
         {% for file in found_files %}
           <li style="position:static;display:inline-table;"><a href="{% url 'drive:images:detail' file.course_path.path file.id %}">
           {{ file.image_tag }}</a></li>
