@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.safestring import mark_safe
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.exceptions import ValidationError
 
 
 class Courses(models.Model):
@@ -36,6 +37,11 @@ class Image(models.Model):
     image = models.ImageField(default='static/default_img.png', upload_to=content_file_name)
     file = models.FileField(upload_to=content_file_name, blank=True, null=True)
 
+    def clean(self):
+        super().clean()
+        if not self.file and self.image == 'static/default_img.png':
+            raise ValidationError('You should upload a file.')
+
     def image_tag(self):
         if self.file:
             return mark_safe(f'<img src="{self.image.url}" title="{self.file.url}" width="250" height="150" />')
@@ -58,3 +64,10 @@ class Comments(models.Model):
     comment = models.TextField()
     rating = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
     file = models.ForeignKey(Image, on_delete=models.CASCADE)
+
+
+# class Requests(models.Model):
+#     course = models.IntegerField()
+#     specialty = models.CharField(max_length=30)
+#     subject = models.CharField(max_length=30)
+#     username = models.CharField(max_length=50)
